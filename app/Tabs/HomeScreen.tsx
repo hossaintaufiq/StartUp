@@ -2,12 +2,12 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-    Image,
-    ScrollView,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 const categories = [
@@ -21,38 +21,38 @@ const categories = [
 const professionals = [
   {
     title: 'Photographer',
-    image: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGhvdG9ncmFwaGVyfGVufDB8fDB8fHww',
+    image: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600',
   },
   {
     title: 'Makeup Artist',
-    image: 'https://images.unsplash.com/photo-1621691554154-39df33190691?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fG1ha2V1cCUyMGFydGlzdHxlbnwwfHwwfHx8MA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1621691554154-39df33190691?w=600',
   },
   {
     title: 'Digital Marketer',
-    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGlnaXRhbCUyMG1hcmtldGVyfGVufDB8fDB8fHww',
+    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600',
   },
   {
     title: 'Dietician',
-    image: 'https://images.unsplash.com/photo-1585358682246-23acb1561f6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGRpZXRpY2lhbnxlbnwwfHwwfHx8MA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1585358682246-23acb1561f6b?w=600',
   },
 ];
 
 const recommended = [
   {
     title: 'Dry-Cleaning',
-    image: 'https://plus.unsplash.com/premium_photo-1682129254917-6c5acb7532ab?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGRyeSUyMGNsZWFuaW5nfGVufDB8fDB8fHww',
+    image: 'https://plus.unsplash.com/premium_photo-1682129254917-6c5acb7532ab?w=600',
   },
   {
     title: 'Golf Club Cleaning',
-    image: 'https://images.unsplash.com/photo-1624971035514-2bbbc81ea9fe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z29sZiUyMGNsdWIlMjBjbGVhbmluZ3xlbnwwfHwwfHx8MA%3D%3D',
+    image: 'https://images.unsplash.com/photo-1624971035514-2bbbc81ea9fe?w=600',
   },
   {
     title: 'Personal Chef',
-    image: 'https://images.unsplash.com/photo-1744043494585-d42e2ac96df6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyc29uYWwlMjBDaGVmfGVufDB8fDB8fHww',
+    image: 'https://images.unsplash.com/photo-1744043494585-d42e2ac96df6?w=600',
   },
   {
     title: 'Tutoring',
-    image: 'https://images.unsplash.com/photo-1532619187608-e5375cab36aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dHV0b3Jpbmd8ZW58MHx8MHx8fDA%3D',
+    image: 'https://images.unsplash.com/photo-1532619187608-e5375cab36aa?w=600',
   },
 ];
 
@@ -86,7 +86,7 @@ const HomeScreen = () => {
       <View className="h-44 rounded-xl overflow-hidden mb-6">
         <Image
           source={{
-            uri: 'https://plus.unsplash.com/premium_photo-1661757369657-d7b09363e137?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjV8fHNlcnZpbmd8ZW58MHx8MHx8fDA%3D',
+            uri: 'https://plus.unsplash.com/premium_photo-1661757369657-d7b09363e137?w=600',
           }}
           className="w-full h-full"
           resizeMode="cover"
@@ -97,7 +97,7 @@ const HomeScreen = () => {
       <View className="flex-row justify-between items-center mb-2">
         <Text className="text-lg font-semibold">Category</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Services')}
+          onPress={() => navigation.navigate('Category')}
           className="bg-green-100 px-3 py-1 rounded-full"
         >
           <Text className="text-green-600 text-sm font-medium">See All</Text>
@@ -140,8 +140,7 @@ const HomeScreen = () => {
         <Text className="text-lg font-semibold">Recommended</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('Services')}
-          className="bg-green-100 px-3 py-1 rounded-full"
-        >
+          className="bg-green-100 px-3 py-1 rounded-full">
           <Text className="text-green-600 text-sm font-medium">See All</Text>
         </TouchableOpacity>
       </View>

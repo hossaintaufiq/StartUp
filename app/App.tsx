@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { LightTheme } from './Themes';
 
+import Category from './Category/Category';
 import BookService from './Screens/BookService';
 import ServiceDetail from './Screens/ServiceDetail';
 import ServiceList from './Screens/ServiceList';
@@ -19,8 +20,10 @@ export default function App() {
           <Stack.Screen name="Services" component={ServiceList} />
           <Stack.Screen name="ServiceDetail" component={ServiceDetail} />
           <Stack.Screen name="BookService" component={BookService} />
+          <Stack.Screen name="Category" component={Category} />
         </Stack.Navigator>
       {/* </NavigationContainer> */}
     </PaperProvider>
   );
 }
+
