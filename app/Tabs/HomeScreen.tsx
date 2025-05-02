@@ -1,25 +1,44 @@
 import { Feather, Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 import React from 'react';
 import {
-  Dimensions,
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    Dimensions,
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native';
 import Footer from '../Components/Footer';
 
 const { width } = Dimensions.get('window');
 
 const categories = [
-  { name: 'AC Repair', icon: 'tools' },
-  { name: 'Electrician', icon: 'zap' },
-  { name: 'Car Wash', icon: 'truck' },
-  { name: 'Cleaning', icon: 'refresh-cw' },
-  { name: 'Moving', icon: 'box' },
+  {
+    title: 'AC Repair',
+    icon: 'wind',
+    bgColor: '#D1FAE5',
+    count: '45+ Services'
+  },
+  {
+    title: 'Electrician',
+    icon: 'zap',
+    bgColor: '#DBEAFE',
+    count: '30+ Services'
+  },
+  {
+    title: 'Car Wash',
+    icon: 'truck',
+    bgColor: '#FEE2E2',
+    count: '25+ Services'
+  },
+  {
+    title: 'Cleaning',
+    icon: 'refresh-cw',
+    bgColor: '#E0E7FF',
+    count: '50+ Services'
+  },
 ];
 
 const professionals = [
@@ -27,13 +46,13 @@ const professionals = [
     title: 'Photographer',
     image: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600',
     rating: '4.8',
-    price: '$50/hr'
+    reviews: '120'
   },
   {
     title: 'Makeup Artist',
     image: 'https://images.unsplash.com/photo-1621691554154-39df33190691?w=600',
     rating: '4.9',
-    price: '$45/hr'
+    reviews: '150'
   },
   {
     title: 'Digital Marketer',
@@ -95,7 +114,6 @@ const bannerData = [
 ];
 
 const HomeScreen = () => {
-  const navigation = useNavigation<any>();
   const [activeBannerIndex, setActiveBannerIndex] = React.useState(0);
 
   // Banner auto-scroll with smooth transition
@@ -164,7 +182,7 @@ const HomeScreen = () => {
                 <View className="flex-row items-center space-x-4">
                   <TouchableOpacity 
                     className="bg-white rounded-full px-6 py-3 flex-row items-center"
-                    onPress={() => navigation.navigate('Services')}
+                    onPress={() => router.push('/(tabs)/categories')}
                   >
                     <Text className="text-green-600 font-semibold mr-2">
                       Book Now
@@ -173,7 +191,7 @@ const HomeScreen = () => {
                   </TouchableOpacity>
                   <TouchableOpacity 
                     className="bg-black/30 rounded-full px-6 py-3 border border-white/30"
-                    onPress={() => navigation.navigate('Category')}
+                    onPress={() => router.push('/(tabs)/categories')}
                   >
                     <Text className="text-white font-semibold">
                       Learn More
@@ -262,7 +280,7 @@ const HomeScreen = () => {
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-lg font-semibold">Categories</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Category')}
+            onPress={() => router.push('/(tabs)/categories')}
             className="bg-green-100 px-3 py-1 rounded-full"
           >
             <Text className="text-green-600 text-sm font-medium">See All</Text>
@@ -273,48 +291,57 @@ const HomeScreen = () => {
             <TouchableOpacity 
               key={idx} 
               className="w-[18%] items-center mb-4"
-              onPress={() => navigation.navigate('Services')}
+              onPress={() => router.push('/(tabs)/categories')}
             >
               <View className="w-12 h-12 bg-green-50 rounded-full items-center justify-center mb-1">
-                <Feather name={cat.icon} size={20} color="#16a34a" />
+                <Feather name={cat.icon as any} size={20} color="#16a34a" />
               </View>
-              <Text className="text-xs text-center text-gray-600">{cat.name}</Text>
+              <Text className="text-xs text-center text-gray-600">{cat.title}</Text>
+              <Text className="text-xs text-gray-500">{cat.count}</Text>
             </TouchableOpacity>
           ))}
         </View>
       </View>
 
       {/* Top Professionals */}
-      <View className="px-4 mb-6">
+      <View className="mb-6">
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-lg font-semibold">Top Professionals</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Services')}
+          <TouchableOpacity 
+            onPress={() => router.push('/service-list')}
             className="bg-green-100 px-3 py-1 rounded-full"
           >
             <Text className="text-green-600 text-sm font-medium">See All</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {professionals.map((pro, idx) => (
-            <TouchableOpacity 
-              key={idx} 
-              className="mr-4 bg-white rounded-xl overflow-hidden shadow-sm"
-              style={{ width: 200 }}
+
+        <ScrollView 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          className="space-x-4"
+        >
+          {professionals.map((pro, index) => (
+            <TouchableOpacity
+              key={index}
+              className="w-48 bg-white rounded-xl overflow-hidden shadow-sm"
+              onPress={() => router.push({
+                pathname: '/service-detail',
+                params: { serviceId: index }
+              })}
             >
-              <Image 
-                source={{ uri: pro.image }} 
-                className="w-full h-24"
+              <Image
+                source={{ uri: pro.image }}
+                className="w-full h-32"
                 resizeMode="cover"
               />
               <View className="p-3">
                 <Text className="font-semibold mb-1">{pro.title}</Text>
-                <View className="flex-row justify-between items-center">
-                  <View className="flex-row items-center">
-                    <Feather name="star" size={14} color="#16a34a" />
-                    <Text className="ml-1 text-sm text-gray-600">{pro.rating}</Text>
-                  </View>
-                  <Text className="text-green-600 font-medium">{pro.price}</Text>
+                <View className="flex-row items-center">
+                  <Feather name="star" size={14} color="#16a34a" />
+                  <Text className="ml-1 text-sm text-gray-600">{pro.rating}</Text>
+                  <Text className="ml-1 text-xs text-gray-500">
+                    ({pro.reviews} reviews)
+                  </Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -331,7 +358,7 @@ const HomeScreen = () => {
           </Text>
           <TouchableOpacity 
             className="bg-green-600 px-4 py-2 rounded-full mt-3"
-            onPress={() => navigation.navigate('Services')}
+            onPress={() => router.push('/(tabs)/categories')}
           >
             <Text className="text-white text-center font-medium">Book a Service</Text>
           </TouchableOpacity>

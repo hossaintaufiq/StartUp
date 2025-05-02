@@ -1,21 +1,22 @@
 import { Feather } from '@expo/vector-icons';
+import { router, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 import {
   Animated,
   Dimensions,
   Image,
-  Platform,
   ScrollView,
   Share,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const ServiceDetail = ({ route, navigation }: any) => {
-  const { service } = route.params;
+const ServiceDetail = () => {
+  const params = useLocalSearchParams();
+  const service = params; // Contains the service details passed from the previous screen
   const scrollY = new Animated.Value(0);
   const [selectedTab, setSelectedTab] = useState('Overview');
 
@@ -71,6 +72,13 @@ const ServiceDetail = ({ route, navigation }: any) => {
     }
   };
 
+  const handleBookNow = () => {
+    router.push({
+      pathname: '/book-service',
+      params: service // Pass all service details to booking screen
+    });
+  };
+
   const renderHeader = () => {
     const headerOpacity = scrollY.interpolate({
       inputRange: [0, 200],
@@ -79,22 +87,20 @@ const ServiceDetail = ({ route, navigation }: any) => {
     });
 
     return (
-      <Animated.View 
-        className={`absolute top-0 left-0 right-0 z-10 ${
-          Platform.OS === 'ios' ? 'pt-12' : 'pt-6'
-        } pb-4 bg-green-600`}
-        style={{ opacity: headerOpacity }}
-      >
-        <View className="px-4 flex-row items-center justify-between">
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+      <View className="bg-green-600 pt-12 pb-4 px-4">
+        <View className="flex-row items-center justify-between">
+          <TouchableOpacity 
+            onPress={() => router.back()}
+            className="w-10 h-10 items-center justify-center"
+          >
             <Feather name="arrow-left" size={24} color="white" />
           </TouchableOpacity>
-          <Text className="text-white text-lg font-semibold">{service.name}</Text>
-          <TouchableOpacity onPress={handleShare}>
-            <Feather name="share-2" size={24} color="white" />
+          <Text className="text-white text-lg font-semibold">Service Details</Text>
+          <TouchableOpacity className="w-10 h-10 items-center justify-center">
+            <Feather name="heart" size={24} color="white" />
           </TouchableOpacity>
         </View>
-      </Animated.View>
+      </View>
     );
   };
 
@@ -300,7 +306,7 @@ const ServiceDetail = ({ route, navigation }: any) => {
               <Text className="ml-1 font-medium">{service.rating}</Text>
               <Text className="ml-1 text-gray-500">
                 ({service.reviews} reviews)
-              </Text>
+        </Text>
               <View className="h-2 w-2 bg-gray-300 rounded-full mx-2" />
               <Text className="text-gray-500">{service.availability}</Text>
             </View>
@@ -314,7 +320,7 @@ const ServiceDetail = ({ route, navigation }: any) => {
       {/* Bottom Action Bar */}
       <View className="bg-white p-4 border-t border-gray-200">
         <TouchableOpacity
-          onPress={() => navigation.navigate('BookService', { service })}
+          onPress={handleBookNow}
           className="bg-green-600 py-4 rounded-xl flex-row items-center justify-center"
         >
           <Text className="text-white font-semibold text-lg mr-2">
