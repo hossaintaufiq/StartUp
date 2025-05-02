@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import serviceListData from '../data/serviceList.json';
 
 // Sample services data
 const services = [
@@ -48,10 +49,9 @@ const services = [
 ];
 
 export default function ServiceList() {
+  const { services, filters } = serviceListData;
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
-
-  const filters = ['All', 'Available Now', 'Top Rated', 'Price Low-High'];
 
   return (
     <SafeAreaView className="flex-1 bg-[#F2FDF3]">

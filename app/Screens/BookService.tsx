@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import bookingData from '../data/booking.json';
+import type { ServicePackage } from '../types/booking';
 
 export default function BookService() {
   const params = useLocalSearchParams();
@@ -16,15 +18,9 @@ export default function BookService() {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<ServicePackage>(bookingData.servicePackages[0]);
   const [address, setAddress] = useState('');
   const [specialInstructions, setSpecialInstructions] = useState('');
-
-  const timeSlots = [
-    { id: '1', time: '09:00 AM', available: true },
-    { id: '2', time: '10:00 AM', available: true },
-    { id: '3', time: '11:00 AM', available: false },
-    { id: '4', time: '12:00 PM', available: true },
-  ];
 
   const handleConfirmBooking = () => {
     if (!selectedTimeSlot || !address) {
@@ -40,11 +36,11 @@ export default function BookService() {
       serviceImage: service.image,
       date: selectedDate.toISOString(),
       time: selectedTimeSlot,
+      package: selectedPackage,
       address: address,
       specialInstructions: specialInstructions,
       status: 'Confirmed',
-      price: service.price,
-      totalAmount: service.price,
+      totalAmount: selectedPackage.price,
     };
 
     // Navigate to booking details
@@ -89,7 +85,7 @@ export default function BookService() {
         <View className="bg-white rounded-xl p-4 mb-4">
           <Text className="text-lg font-semibold mb-4">Select Time</Text>
           <View className="flex-row flex-wrap justify-between">
-            {timeSlots.map((slot) => (
+            {bookingData.timeSlots.map((slot) => (
               <TouchableOpacity
                 key={slot.id}
                 onPress={() => slot.available && setSelectedTimeSlot(slot.time)}

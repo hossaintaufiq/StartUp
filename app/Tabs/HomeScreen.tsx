@@ -11,77 +11,11 @@ import {
     View,
 } from 'react-native';
 import Footer from '../Components/Footer';
+import servicesData from '../data/services.json';
 
 const { width } = Dimensions.get('window');
 
-const categories = [
-  {
-    title: 'AC Repair',
-    icon: 'wind',
-    bgColor: '#D1FAE5',
-    count: '45+ Services'
-  },
-  {
-    title: 'Electrician',
-    icon: 'zap',
-    bgColor: '#DBEAFE',
-    count: '30+ Services'
-  },
-  {
-    title: 'Car Wash',
-    icon: 'truck',
-    bgColor: '#FEE2E2',
-    count: '25+ Services'
-  },
-  {
-    title: 'Cleaning',
-    icon: 'refresh-cw',
-    bgColor: '#E0E7FF',
-    count: '50+ Services'
-  },
-];
-
-const professionals = [
-  {
-    title: 'Photographer',
-    image: 'https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600',
-    rating: '4.8',
-    reviews: '120'
-  },
-  {
-    title: 'Makeup Artist',
-    image: 'https://images.unsplash.com/photo-1621691554154-39df33190691?w=600',
-    rating: '4.9',
-    reviews: '150'
-  },
-  {
-    title: 'Digital Marketer',
-    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600',
-    rating: '4.7',
-    price: '$40/hr'
-  },
-  {
-    title: 'Dietician',
-    image: 'https://images.unsplash.com/photo-1585358682246-23acb1561f6b?w=600',
-    rating: '4.9',
-    price: '$55/hr'
-  },
-];
-
-const featuredServices = [
-  {
-    title: 'Spring Cleaning Special',
-    description: '20% off on deep cleaning services',
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600',
-    discount: '20%'
-  },
-  {
-    title: 'Home Repair Bundle',
-    description: 'Book any 3 services and save',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600',
-    discount: '15%'
-  },
-];
+const { categories, professionals, featuredServices } = servicesData;
 
 const bannerData = [
   {
@@ -225,15 +159,15 @@ const HomeScreen = () => {
       {/* Top Bar */}
       <View className="px-4 pt-12 pb-2">
         <View className="flex-row items-center justify-between">
-          <Ionicons name="menu" size={24} />
-          <Text className="text-xl font-bold">Home</Text>
-          <View className="flex-row items-center space-x-2">
-            <TouchableOpacity className="bg-green-100 px-3 py-1 rounded-full">
-              <Text className="text-green-600 text-sm">Become a Seller</Text>
-            </TouchableOpacity>
-            <Feather name="bell" size={22} />
-          </View>
+        <Ionicons name="menu" size={24} />
+        <Text className="text-xl font-bold">Home</Text>
+        <View className="flex-row items-center space-x-2">
+          <TouchableOpacity className="bg-green-100 px-3 py-1 rounded-full">
+            <Text className="text-green-600 text-sm">Become a Seller</Text>
+          </TouchableOpacity>
+          <Feather name="bell" size={22} />
         </View>
+      </View>
       </View>
 
       {/* Enhanced Banner Section */}
@@ -242,11 +176,11 @@ const HomeScreen = () => {
       {/* Search Bar with Location */}
       <View className="px-4 mb-6">
         <View className="flex-row items-center bg-white px-4 py-2 rounded-xl mb-2 shadow-sm">
-          <Feather name="search" size={20} color="#999" />
-          <TextInput
-            placeholder="Search services"
-            className="ml-2 flex-1 text-sm text-gray-700"
-          />
+        <Feather name="search" size={20} color="#999" />
+        <TextInput
+          placeholder="Search services"
+          className="ml-2 flex-1 text-sm text-gray-700"
+        />
         </View>
         <TouchableOpacity className="flex-row items-center">
           <Feather name="map-pin" size={16} color="#16a34a" />
@@ -279,15 +213,15 @@ const HomeScreen = () => {
       <View className="bg-white px-4 py-6 mb-6">
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-lg font-semibold">Categories</Text>
-          <TouchableOpacity
+        <TouchableOpacity
             onPress={() => router.push('/(tabs)/categories')}
-            className="bg-green-100 px-3 py-1 rounded-full"
-          >
-            <Text className="text-green-600 text-sm font-medium">See All</Text>
-          </TouchableOpacity>
-        </View>
+          className="bg-green-100 px-3 py-1 rounded-full"
+        >
+          <Text className="text-green-600 text-sm font-medium">See All</Text>
+        </TouchableOpacity>
+      </View>
         <View className="flex-row flex-wrap justify-between">
-          {categories.map((cat, idx) => (
+        {categories.map((cat, idx) => (
             <TouchableOpacity 
               key={idx} 
               className="w-[18%] items-center mb-4"
@@ -300,20 +234,20 @@ const HomeScreen = () => {
               <Text className="text-xs text-gray-500">{cat.count}</Text>
             </TouchableOpacity>
           ))}
-        </View>
-      </View>
+            </View>
+          </View>
 
       {/* Top Professionals */}
       <View className="mb-6">
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-lg font-semibold">Top Professionals</Text>
-          <TouchableOpacity 
+        <TouchableOpacity
             onPress={() => router.push('/service-list')}
-            className="bg-green-100 px-3 py-1 rounded-full"
-          >
-            <Text className="text-green-600 text-sm font-medium">See All</Text>
-          </TouchableOpacity>
-        </View>
+          className="bg-green-100 px-3 py-1 rounded-full"
+        >
+          <Text className="text-green-600 text-sm font-medium">See All</Text>
+        </TouchableOpacity>
+      </View>
 
         <ScrollView 
           horizontal 
@@ -343,10 +277,10 @@ const HomeScreen = () => {
                     ({pro.reviews} reviews)
                   </Text>
                 </View>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
       </View>
 
       {/* Recent Bookings Section */}
@@ -356,7 +290,7 @@ const HomeScreen = () => {
           <Text className="text-base text-gray-600 text-center">
             No recent bookings found
           </Text>
-          <TouchableOpacity 
+          <TouchableOpacity
             className="bg-green-600 px-4 py-2 rounded-full mt-3"
             onPress={() => router.push('/(tabs)/categories')}
           >

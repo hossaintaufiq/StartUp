@@ -1,0 +1,25 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "John's Plumbing",
+      "category": "Plumber",
+      "rating": "4.8",
+      "reviews": 120,
+      "price": "$25/hr",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600",
+      "availability": "Available Now"
+    },
+    {
+      "id": 2,
+      "name": "QuickFix Electric",
+      "category": "Electrician",
+      "rating": "4.9",
+      "reviews": 150,
+      "price": "$30/hr",
+      "image": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600",
+      "availability": "Available Now"
+    }
+  ],
+  "filters": ["All", "Available Now", "Top Rated", "Price Low-High"]
+} 

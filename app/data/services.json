@@ -1,0 +1,68 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "AC Repair",
+      "icon": "wind",
+      "bgColor": "#D1FAE5",
+      "count": "45+ Services"
+    },
+    {
+      "id": 2,
+      "title": "Electrician",
+      "icon": "zap",
+      "bgColor": "#DBEAFE",
+      "count": "30+ Services"
+    },
+    {
+      "id": 3,
+      "title": "Car Wash",
+      "icon": "truck",
+      "bgColor": "#FEE2E2",
+      "count": "25+ Services"
+    },
+    {
+      "id": 4,
+      "title": "Cleaning",
+      "icon": "refresh-cw",
+      "bgColor": "#E0E7FF",
+      "count": "50+ Services"
+    }
+  ],
+  "professionals": [
+    {
+      "id": 1,
+      "title": "Photographer",
+      "image": "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?w=600",
+      "rating": "4.8",
+      "reviews": "120",
+      "price": "$50/hr",
+      "availability": "Available Now"
+    },
+    {
+      "id": 2,
+      "title": "Makeup Artist",
+      "image": "https://images.unsplash.com/photo-1621691554154-39df33190691?w=600",
+      "rating": "4.9",
+      "reviews": "150",
+      "price": "$45/hr",
+      "availability": "Available Now"
+    }
+  ],
+  "featuredServices": [
+    {
+      "id": 1,
+      "title": "Spring Cleaning Special",
+      "description": "20% off on deep cleaning services",
+      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600",
+      "discount": "20%"
+    },
+    {
+      "id": 2,
+      "title": "Home Repair Bundle",
+      "description": "Book any 3 services and save",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600",
+      "discount": "15%"
+    }
+  ]
+} 

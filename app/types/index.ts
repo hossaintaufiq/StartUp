@@ -7,28 +7,22 @@ export interface User {
 }
 
 export interface Category {
-  id: string;
+  id: number;
   title: string;
   icon: string;
   bgColor: string;
-  services: string[];
-  providers: number;
-  image: string;
+  count: string;
 }
 
 export interface Service {
-  id: string;
+  id: number;
   name: string;
   category: string;
-  description: string;
-  image: string;
-  price: number;
-  rating: number;
+  rating: string;
   reviews: number;
-  availability: 'Available Now' | 'Busy';
-  tags: string[];
-  provider: ServiceProvider;
-  features: string[];
+  price: string;
+  image: string;
+  availability: string;
 }
 
 export interface ServiceProvider {
@@ -88,4 +82,48 @@ export interface OnboardingSlide {
   image: string;
   backgroundColor: string;
   iconName: string;
+}
+
+export interface Professional {
+  id: number;
+  title: string;
+  image: string;
+  rating: string;
+  reviews: string;
+  price: string;
+  availability: string;
+}
+
+export interface FeaturedService {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  discount: string;
+}
+
+export interface MainCategory {
+  id: number;
+  title: string;
+  icon: string;
+  bgColor: string;
+  services: string[];
+  providers: number;
+  image: string;
+}
+
+export interface ServiceData {
+  categories: Category[];
+  professionals: Professional[];
+  featuredServices: FeaturedService[];
+}
+
+export interface CategoryData {
+  mainCategories: MainCategory[];
+  filters: string[];
+}
+
+export interface ServiceListData {
+  services: Service[];
+  filters: string[];
 } 

@@ -1,0 +1,32 @@
+{
+  "mainCategories": [
+    {
+      "id": 1,
+      "title": "Home Cleaning",
+      "icon": "home",
+      "bgColor": "#D1FAE5",
+      "services": ["Deep Cleaning", "Regular Cleaning", "Window Cleaning"],
+      "providers": 48,
+      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600"
+    },
+    {
+      "id": 2,
+      "title": "AC Repair",
+      "icon": "wind",
+      "bgColor": "#DBEAFE",
+      "services": ["Installation", "Maintenance", "Repair"],
+      "providers": 35,
+      "image": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600"
+    },
+    {
+      "id": 3,
+      "title": "Electrician",
+      "icon": "zap",
+      "bgColor": "#FEE2E2",
+      "services": ["Wiring", "Installation", "Repair"],
+      "providers": 42,
+      "image": "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600"
+    }
+  ],
+  "filters": ["All", "Popular", "New", "Trending"]
+} 

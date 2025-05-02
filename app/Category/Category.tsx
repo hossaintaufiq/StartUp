@@ -3,13 +3,14 @@ import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View
 } from 'react-native';
+import categoryData from '../data/categories.json';
 
 // Enhanced category data with more details
 const categories = [
@@ -76,8 +77,7 @@ const Category = () => {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('All');
-
-  const filters = ['All', 'Popular', 'New', 'Trending'];
+  const { mainCategories, filters } = categoryData;
 
   const filteredCategories = categories.filter(category =>
     category.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -131,7 +131,7 @@ const Category = () => {
               />
               <View className="p-3">
                 <View className="flex-row justify-between items-center mb-2">
-                  <View 
+          <View
                     style={{ backgroundColor: category.bgColor }}
                     className="px-3 py-1 rounded-full"
                   >
@@ -206,7 +206,7 @@ const Category = () => {
                 <Text className="text-gray-500 text-xs">
                   {category.providers} Service Providers
                 </Text>
-              </View>
+          </View>
             </TouchableOpacity>
           ))}
         </View>
